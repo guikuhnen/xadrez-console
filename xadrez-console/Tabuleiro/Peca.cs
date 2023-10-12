@@ -3,9 +3,9 @@
     internal class Peca
     {
         public Posicao Posicao { get; private set; }
-        public Cor Cor { get; private set; }
-        public int QteMovimentos { get; private set; }
-        public TabuleiroJogo Tabuleiro { get; private set; }
+        public Cor Cor { get; protected set; }
+        public int QteMovimentos { get; protected set; }
+        public TabuleiroJogo Tabuleiro { get; protected set; }
 
         public Peca(Posicao posicao, Cor cor, TabuleiroJogo tabuleiro)
         {
