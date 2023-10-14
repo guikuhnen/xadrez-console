@@ -10,5 +10,16 @@ namespace xadrez_console.Xadrez
         {
             return "D";
         }
+
+        public override bool PodeMover(Posicao posicao)
+        {
+            Peca peca = Tabuleiro.ObterPeca(posicao);
+            return peca == null || peca.Cor != Cor;
+        }
+
+        public override bool[,] MovimentosPossiveis()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
