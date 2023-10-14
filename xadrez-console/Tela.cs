@@ -5,6 +5,42 @@ namespace xadrez_console
 {
     internal class Tela
     {
+        public static void ImprimirPartida(PartidaXadrez partidaXadrez)
+        {
+            ImprimirTabuleiro(partidaXadrez.TabuleiroJogo);
+
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partidaXadrez);
+
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partidaXadrez.Turno);
+            Console.WriteLine("Aguardando jogada: " + partidaXadrez.JogadorAtual);
+        }
+
+        private static void ImprimirPecasCapturadas(PartidaXadrez partidaXadrez)
+        {
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Brancas: ");
+            ImprimirConjunto(partidaXadrez.PecasCapturadas(Cor.Branca));
+
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            ImprimirConjunto(partidaXadrez.PecasCapturadas(Cor.Preta));
+            Console.ForegroundColor = aux;
+
+            Console.WriteLine();
+        }
+
+        private static void ImprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[");
+            foreach (Peca item in conjunto)
+                Console.Write(item + " ");
+            Console.Write("]");
+        }
+
         public static void ImprimirTabuleiro(TabuleiroJogo tabuleiro)
         {
             for (int i = 0; i < tabuleiro.Linhas; i++)
@@ -51,7 +87,7 @@ namespace xadrez_console
             char coluna = s[0];
             int linha = int.Parse(s[1] + "");
 
-            return new PosicaoXadrez(coluna, linha);
+            return new PosicaoXadrez(linha, coluna);
         }
 
         public static void ImprimirPeca(Peca peca)
