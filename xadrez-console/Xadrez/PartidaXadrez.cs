@@ -99,7 +99,7 @@ namespace xadrez_console.Xadrez
         {
             Peca pecaAtual = TabuleiroJogo.ObterPeca(origem);
 
-            if (!pecaAtual.PodeMoverPara(destino))
+            if (!pecaAtual.MovimentoPossivel(destino))
                 throw new TabuleiroException("Posição de destino inválida!");
         }
 
